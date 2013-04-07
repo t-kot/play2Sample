@@ -1,0 +1,13 @@
+# Home page
+GET     /                           controllers.Application.index
+
+# Thread page
+GET /threads controllers.Threads.index
+GET /threads/:id controllers.Threads.show(id: Long)
+POST /threads controllers.Threads.create
+
+POST /threads/:thread_id/comments controllers.Comments.create(thread_id: Long)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

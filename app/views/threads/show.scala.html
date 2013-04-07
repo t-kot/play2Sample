@@ -1,0 +1,16 @@
+@(commentForm: Form[String], thread: Thread)
+
+@import helper._
+
+@main("thread show") {
+  <div class='title'>@thread.title</div>
+  <div class='created_at'>@thread.createdAt</div>
+  @for(comment <- thread.comments) {
+    <li>@comment.body</li>
+  }
+
+  @form(routes.Comments.create(thread_id = thread.id)) {
+    @textarea(commentForm("body"))
+    <input type='submit' value='作成' />
+  }
+}

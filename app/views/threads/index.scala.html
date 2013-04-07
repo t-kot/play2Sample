@@ -1,0 +1,16 @@
+@(threadForm: Form[String], threads: List[Thread])
+
+@import helper._
+
+@main("thread form") {
+  @form(routes.Threads.create()) {
+    @textarea(threadForm("title"))
+    <input type='submit' value='作成' />
+  }
+
+  @for(thread <- threads) {
+    <li>
+      <a href="/threads/@thread.id">@thread.title</a>
+    </li>
+  }
+}
